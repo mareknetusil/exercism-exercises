@@ -17,7 +17,7 @@ std::string log_level(std::string line) {
 	return log_lvl;
 }
 
-std::string reformat(std::string line) {
+std::string reformat(const std::string& line) {
     // return the reformatted message
 	const auto log_lvl = log_level(line);
 	const auto msg = message(line);
