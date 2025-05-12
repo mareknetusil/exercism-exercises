@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "exercism-python"
+version = "0.1.0"
+description = ""
+authors = ["netusil <m.netusil@mikrovox.cz>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pytest = "^8.3.5"
+pytest-cache = "^1.0"
+pytest-subtests = "^0.14.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
