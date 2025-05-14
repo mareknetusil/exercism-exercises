@@ -21,10 +21,8 @@ int monthly_rate(const double hourly_rate, const double discount) {
 // days_in_budget calculates the number of workdays given a budget, hourly rate,
 // and discount The returned number of days is rounded down (take the floor) to
 // the next integer.
-int days_in_budget(int budget, double hourly_rate, double discount) {
-    // TODO: Implement a function that takes a budget, an hourly rate, and a
-    // discount, and calculates how many complete days of work that covers.
-    const auto _daily_rate = daily_rate(hourly_rate);
-    const auto discounted_rate = apply_discount(_daily_rate, discount);
-    return budget / discounted_rate;
+int days_in_budget(const int budget, const double hourly_rate, const double discount) {
+    const auto day_rate = daily_rate(hourly_rate);
+    const auto discounted_rate = apply_discount(day_rate, discount);
+    return std::floor(budget / discounted_rate);
 }
