@@ -47,16 +47,7 @@ namespace hellmath {
 
 	bool has_priority(AccountStatus first, AccountStatus second)
 	{
-		if (first == AccountStatus::mod && second != AccountStatus::mod)
-			return true;
-
-		if (first != AccountStatus::troll && second == AccountStatus::troll)
-			return true;
-
-		if (first != AccountStatus::troll && first != AccountStatus::guest && second == AccountStatus::guest)
-			return true;
-
-		return false;
+		return first > second;
 	}
 
 }  // namespace hellmath
