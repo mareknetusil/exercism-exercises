@@ -1,0 +1,4 @@
+/home/marek/snap/exercism/5/exercism/cpp/making-the-grade/build/CMakeFiles/making-the-grade.dir
+/home/marek/snap/exercism/5/exercism/cpp/making-the-grade/build/CMakeFiles/test_making-the-grade.dir
+/home/marek/snap/exercism/5/exercism/cpp/making-the-grade/build/CMakeFiles/edit_cache.dir
+/home/marek/snap/exercism/5/exercism/cpp/making-the-grade/build/CMakeFiles/rebuild_cache.dir
