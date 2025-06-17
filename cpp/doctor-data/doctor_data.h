@@ -8,18 +8,14 @@ namespace star_map {
 }
 
 namespace heaven {
-    class Vessel {
-    public:
-        Vessel(std::string name, int generation);
-        Vessel(std::string name, int generation, star_map::System system);
-
+    struct Vessel {
         Vessel replicate(std::string name) const;
         void make_buster();
         bool shoot_buster();
 
         std::string name;
         int generation;
-        star_map::System current_system;
+        star_map::System current_system = star_map::System::Sol;
         int busters = 0;
     };
 
