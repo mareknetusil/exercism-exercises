@@ -7,4 +7,5 @@ node_modules
 .stack-work
 
 cmake-build-debug
+build
 .exercism
