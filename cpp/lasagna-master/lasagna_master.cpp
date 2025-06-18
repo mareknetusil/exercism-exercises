@@ -30,6 +30,8 @@ void addSecretIngredient(
     std::vector<std::string> &myList,
     const std::vector<std::string> &friendsList
 ) {
+    assert(!myList.empty() && "myList must contain a placeholder element");
+    assert(!friendsList.empty() && "friendsList must not be empty");
     myList.back() = friendsList.back();
 }
 
