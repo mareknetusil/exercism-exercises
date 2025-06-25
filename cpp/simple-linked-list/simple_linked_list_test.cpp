@@ -109,3 +109,42 @@ TEST_CASE("ReverseNonEmptyList") {
         REQUIRE(list.pop() == i);
     }
 }
+
+// My TESTS
+TEST_CASE("Initializer List") {
+    simple_linked_list::List list{1, 2, 3};
+    for (int i = 3; i > 0; i--)
+        REQUIRE(list.pop() == i);
+}
+
+TEST_CASE("Empty") {
+    simple_linked_list::List list{};
+    REQUIRE(list.empty());
+}
+
+TEST_CASE("Front") {
+    simple_linked_list::List list{1};
+    REQUIRE(list.front() == 1);
+    REQUIRE(list.front() == 1);
+}
+
+TEST_CASE("Clear") {
+    simple_linked_list::List list{1, 2};
+    list.clear();
+    REQUIRE(list.empty());
+}
+
+TEST_CASE("Move constructor") {
+    simple_linked_list::List list{1, 2, 3};
+    simple_linked_list::List target{std::move(list)};
+    REQUIRE(list.empty());
+    REQUIRE(target.size() == 3);
+}
+
+TEST_CASE("Move assignment") {
+    simple_linked_list::List list{1, 2, 3};
+    simple_linked_list::List target{};
+    target = std::move(list);
+    REQUIRE(list.empty());
+    REQUIRE(target.size() == 3);
+}

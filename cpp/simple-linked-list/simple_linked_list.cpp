@@ -1,8 +1,34 @@
 #include "simple_linked_list.h"
 
+#include <initializer_list>
 #include <stdexcept>
 
 namespace simple_linked_list {
+
+List::List(std::initializer_list<int> values) {
+    for (int v : values)
+        push(v);
+}
+
+List::List(List&& other)
+    : head(std::move(other.head)),
+      current_size(other.current_size)
+{
+    other.current_size = 0;
+}
+
+List &List::operator=(List&& other) {
+    current_size = other.current_size;
+    head = std::move(other.head);
+    other.current_size = 0;
+    return *this;
+}
+
+List::~List() {
+    // Guard against stack overflow!
+    while (head)
+        head = std::move(head->next);
+}
 
 std::size_t List::size() const {
     return current_size;
@@ -16,7 +42,7 @@ void List::push(int entry) {
 }
 
 int List::pop() {
-    if (current_size == 0)
+    if (!head)
         throw std::out_of_range("Can't pop from an empty list!");
 
     const auto val = head->data;
@@ -36,7 +62,22 @@ void List::reverse() {
     head = std::move(reversed);
 }
 
-List::~List() {
+bool List::empty() const {
+   return size() == 0;
+}
+
+const int &List::front() const {
+    if (!head)
+        throw std::out_of_range("Can't look at front of an empty list!");
+
+    return head->data;
+}
+
+void List::clear() {
+    while (head) {
+        head = std::move(head->next);
+    }
+    current_size = 0;
 }
 
 }  // namespace simple_linked_list
