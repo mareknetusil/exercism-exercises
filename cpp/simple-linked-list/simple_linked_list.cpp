@@ -11,7 +11,7 @@ List::List(std::initializer_list<int> values) {
     std::for_each(
         std::rbegin(values),
         std::rend(values),
-        [this](int v) { this->push(v); }
+        [this](int v) { push(v); }
     );
 }
 
@@ -23,6 +23,10 @@ List::List(List&& other) noexcept
 }
 
 List &List::operator=(List&& other) noexcept {
+    if (this == &other) {
+        return *this;
+    }
+
     current_size = other.current_size;
     head = std::move(other.head);
     other.current_size = 0;
@@ -39,7 +43,7 @@ std::size_t List::size() const noexcept {
     return current_size;
 }
 
-void List::push(int entry) noexcept {
+void List::push(int entry) {
     auto element = std::make_unique<Element>(entry);
     head.swap(element);
     head->next = std::move(element);
@@ -71,7 +75,7 @@ bool List::empty() const noexcept {
    return size() == 0;
 }
 
-int List::front() const {
+const int &List::front() const {
     if (!head)
         throw std::out_of_range("Can't look at front of an empty list!");
 
