@@ -5,7 +5,7 @@ namespace speedywagon {
 // Enter your code below:
 
 // Please don't change the interface of the uv_light_heuristic function
-int uv_light_heuristic(std::vector<int>* data_array) {
+int uv_light_heuristic(const std::vector<int>* data_array) {
     double avg{};
     for (auto element : *data_array) {
         avg += element;
