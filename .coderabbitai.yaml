@@ -1,0 +1,29 @@
+language: "en-US"
+
+early_access: false
+
+enable_free_tier: true
+
+reviews:
+  profile: "assertive"
+  request_changes_workflow: false
+  high_level_summary: true
+  poem: false
+  review_status: true
+  collapse_walkthrough: false
+  auto_review:
+    enabled: true
+    drafts: false
+  path_filters:
+    - "!**/*_test.*"
+    - "!**/build/**"
+    - "**/*.{cpp,h}"
+    - "**/*.py"
+  path_instructions:
+    - path: "cpp/**/*.{cpp,h}"
+      instructions: "You are a senior C++ developer. Make a thorough and critical review of the code. Focus on best practicies, potential bugs, memory leaks, and optimization issues."
+    - path: "python/**/*.py"
+      instructions: "You are a senior Python developer. Make a thorough and critical review of the code. Focus on best practices, potential bugs, and optimization issues."
+
+chat:
+  auto_reply: true
