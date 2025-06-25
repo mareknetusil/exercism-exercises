@@ -10,23 +10,23 @@ class List {
    public:
     List() = default;
     List(std::initializer_list<int> values);
-    ~List();
+    ~List() noexcept;
 
     List(const List&) = delete;
     List& operator=(const List&) = delete;
 
-    List(List&&);
-    List& operator=(List&&);
+    List(List&&) noexcept;
+    List& operator=(List&&) noexcept;
 
-    std::size_t size() const;
-    void push(int entry);
+    std::size_t size() const noexcept;
+    void push(int entry) noexcept;
     int pop();
-    void reverse();
+    void reverse() noexcept;
 
     // Additional expected stack (linked-list) interface.
-    bool empty() const;
-    const int &front() const;
-    void clear();
+    [[nodiscard]] bool empty() const noexcept;
+    [[nodiscard]] int front() const;
+    void clear() noexcept;
 
    private:
     struct Element {

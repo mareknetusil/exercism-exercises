@@ -113,7 +113,7 @@ TEST_CASE("ReverseNonEmptyList") {
 // My TESTS
 TEST_CASE("Initializer List") {
     simple_linked_list::List list{1, 2, 3};
-    for (int i = 3; i > 0; i--)
+    for (int i = 1; i < 4; i++)
         REQUIRE(list.pop() == i);
 }
 
