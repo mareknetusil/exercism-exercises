@@ -19,13 +19,13 @@ class List {
     List& operator=(List&&) noexcept;
 
     std::size_t size() const noexcept;
-    void push(int entry) noexcept;
+    void push(int entry);
     int pop();
     void reverse() noexcept;
 
     // Additional expected stack (linked-list) interface.
     [[nodiscard]] bool empty() const noexcept;
-    [[nodiscard]] int front() const;
+    [[nodiscard]] const int &front() const;
     void clear() noexcept;
 
    private:
