@@ -7,10 +7,13 @@ public:
     explicit space_age(unsigned long seconds) noexcept
         : m_seconds(seconds) {}
 
-    using age_t = double;
+    // years
+    using age_t    = double;
+    // raw seconds
+    using second_t = std::uint64_t;
 
-    [[nodiscard]] age_t seconds() const noexcept { return m_seconds; }
-    [[nodiscard]] age_t on_mercury() const noexcept;
+    [[nodiscard]] second_t seconds()   const noexcept { return m_seconds; }
+    [[nodiscard]] age_t     on_mercury() const noexcept;
     [[nodiscard]] age_t on_venus() const noexcept;
     [[nodiscard]] age_t on_earth() const noexcept;
     [[nodiscard]] age_t on_mars() const noexcept;
