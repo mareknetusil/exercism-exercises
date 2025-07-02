@@ -26,7 +26,7 @@ public:
     [[nodiscard]] age_t on_uranus() const noexcept;
     [[nodiscard]] age_t on_neptune() const noexcept;
 private:
-    unsigned long m_seconds;
+    seconds_t m_seconds;
 };
 
 }  // namespace space_age
