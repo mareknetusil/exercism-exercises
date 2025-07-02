@@ -4,7 +4,9 @@ namespace space_age {
 
 class space_age {
 public:
-    explicit space_age(unsigned long seconds) noexcept
+    using seconds_t = std::uint64_t;           // or std::chrono::seconds
+
+    explicit space_age(seconds_t seconds) noexcept
         : m_seconds(seconds) {}
 
     // years
