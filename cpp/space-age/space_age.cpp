@@ -9,7 +9,7 @@ enum Planet {
     MERCURY, VENUS, EARTH, MARS, JUPITER, SATURN, URANUS, NEPTUNE
 };
 
-constexpr std::array<double, 8> ORBIT_COEFS = {
+constexpr std::array<double, 8> ORBIT_PERIOD_RATIOS = {
     0.2408467,  // MERCURY
     0.61519726, // VENUS
     1.0,        // EARTH
@@ -21,7 +21,7 @@ constexpr std::array<double, 8> ORBIT_COEFS = {
 };
 
 constexpr space_age::age_t age_on_planet(double age_in_secs, Planet planet) {
-    return age_in_secs / SECS_IN_EARTH_YEAR / ORBIT_COEFS[planet];
+    return age_in_secs / SECS_IN_EARTH_YEAR / ORBIT_PERIOD_RATIOS[planet];
 }
 
 

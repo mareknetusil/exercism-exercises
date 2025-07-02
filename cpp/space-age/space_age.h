@@ -1,10 +1,12 @@
 #pragma once
 
+#include <cstdint>
+
 namespace space_age {
 
 class space_age {
 public:
-    using seconds_t = std::uint64_t;           // or std::chrono::seconds
+    using seconds_t = std::uint64_t;
 
     explicit space_age(seconds_t seconds) noexcept
         : m_seconds(seconds) {}
@@ -14,8 +16,8 @@ public:
     // raw seconds
     using second_t = std::uint64_t;
 
-    [[nodiscard]] second_t seconds()   const noexcept { return m_seconds; }
-    [[nodiscard]] age_t     on_mercury() const noexcept;
+    [[nodiscard]] seconds_t seconds()   const noexcept { return m_seconds; }
+    [[nodiscard]] age_t on_mercury() const noexcept;
     [[nodiscard]] age_t on_venus() const noexcept;
     [[nodiscard]] age_t on_earth() const noexcept;
     [[nodiscard]] age_t on_mars() const noexcept;
