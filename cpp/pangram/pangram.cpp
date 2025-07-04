@@ -1,26 +1,20 @@
 #include "pangram.h"
-#include <array>
-#include <cmath>
-#include <algorithm>
-#include <cctype>
+#include <bitset>
 
 namespace pangram {
 
 constexpr auto LETTER_COUNT = 'z' - 'a' + 1;
 
 bool is_pangram(std::string_view text) {
-    std::array<bool, LETTER_COUNT> seen{false};
+    std::bitset<LETTER_COUNT> seen;
 
     for (char c : text) {
         if (std::isalpha(c)) {
-            seen[std::tolower(c) - 'a'] = true;
+            seen.set(std::tolower(c) - 'a');
         }
     }
 
-    return std::all_of(
-        std::begin(seen), std::end(seen),
-        [](bool b) { return b; }
-    );
+    return seen.all();
 }
 
 }  // namespace pangram
