@@ -1,4 +1,5 @@
 #include "hamming.h"
+#include <functional>
 #include <stdexcept>
 #include <numeric>
 
@@ -11,7 +12,7 @@ size_t compute(std::string_view a, std::string_view b) {
 
     const auto count = std::transform_reduce(
         std::begin(a), std::end(a), std::begin(b), 0,
-        std::plus<>(), [](char a_, char b_) { return a_ != b_; }
+        std::plus<>(), std::not_equal_to<>()
     );
     return count;
 }
