@@ -26,7 +26,7 @@ static const std::vector<codon_meaning_t> codon_mapping = {
     {{"UAA", "UAG", "UGA"},         Stop{}}
 };
 
-std::variant<std::string, Stop> codon_to_protein(std::string_view codon) {
+codon_instruction_t codon_to_protein(std::string_view codon) {
     if (codon.size() != CODON_SIZE) {
         throw std::invalid_argument("Wrong codon size.");
     }
