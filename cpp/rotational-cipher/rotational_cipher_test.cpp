@@ -55,3 +55,9 @@ TEST_CASE("rotate all letters", "[9fb93fe6-42b0-46e6-9ec1-0bf0a062d8c9]") {
                 "The quick brown fox jumps over the lazy dog.", 13) ==
             "Gur dhvpx oebja sbk whzcf bire gur ynml qbt.");
 }
+
+TEST_CASE("negative key", "[9fb93fe6-42b0-46e6-9ec1-0bf0a062d8c9]") {
+    REQUIRE(rotational_cipher::rotate(
+                "ABC", -1) ==
+            "ZAB");
+}
