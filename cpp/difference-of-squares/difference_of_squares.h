@@ -2,7 +2,7 @@
 
 namespace difference_of_squares {
 
-[[nodiscard]] unsigned difference(unsigned x);
+[[nodiscard]] unsigned difference(unsigned n);
 
 [[nodiscard]] unsigned square_of_sum(unsigned n);
 
