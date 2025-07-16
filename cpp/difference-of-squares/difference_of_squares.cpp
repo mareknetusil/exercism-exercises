@@ -1,11 +1,10 @@
 #include "difference_of_squares.h"
-#include <cmath>
 
 namespace difference_of_squares {
 
 unsigned square_of_sum(unsigned n) {
     const auto sum = n * (n + 1) / 2;
-    return sum * sum
+    return sum * sum;
 }
 
 unsigned sum_of_squares(unsigned n) {
