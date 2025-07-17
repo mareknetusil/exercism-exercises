@@ -8,8 +8,8 @@ unsigned to_decimal(std::string_view text) {
         if (c < '0' || '2' < c) {
             return 0;
         }
-        retval = (retval << 1) + retval;
-        retval += c - '0';
+
+        retval = retval * 3 + c - '0';
     }
     return retval;
 }
