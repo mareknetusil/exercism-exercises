@@ -26,14 +26,11 @@ constexpr std::optional<int> char_to_number(char c) {
 
 constexpr long long convert(std::string_view text) {
     long long retval = 0;
+    if (text.size() > 15) return 0; // OVERFLOW
+
     for (const auto c : text) {
         const auto number = char_to_number(c);
         if (!number) return 0;
-
-        // OVERFLOW CHECK
-        if (retval > (LLONG_MAX - *number) / 16) {
-            return 0;
-        }
 
         retval = retval * 16 + *number;
     }
