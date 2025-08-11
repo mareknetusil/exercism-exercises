@@ -5,22 +5,11 @@
 
 namespace armstrong_numbers {
 
-template <typename Number>
-constexpr Number pow(Number x, size_t p) {
-    if (p == 0) {
-        return 1;
-    }
-    const auto isEven = p % 2 == 0;
-    const auto partial = pow(x, p / 2);
-    const auto partialSqr = partial * partial;
-    if (isEven) {
-        return partialSqr;
-    } else {
-        return partialSqr * x;
-    }
-}
-
 std::vector<int> split_to_digits(int n) {
+    if (n == 0) {
+        return {0};
+    }
+
     std::vector<int> digits;
     while (n != 0) {
         digits.push_back(n % 10);
@@ -30,10 +19,14 @@ std::vector<int> split_to_digits(int n) {
 }
 
 bool is_armstrong_number(int n) {
+    if (n < 0) {
+        return false;
+    }
+
     const auto digits = split_to_digits(n);
     const auto p = digits.size();
     const auto sum = std::accumulate(digits.begin(), digits.end(), 0, [p](int acc, int x) {
-        return acc + pow(x, p);
+        return acc + std::pow(x, p);
     });
     return sum == n;
 }
