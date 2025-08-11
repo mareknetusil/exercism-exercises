@@ -10,8 +10,8 @@ int positions_to_quantity(int position) {
 
     int count = 0;
     while (position > 0) {
-        count += position & 1;
-        position >>= 1;
+        position &= position - 1;
+        ++count;
     }
 
     return count;
