@@ -5,25 +5,27 @@
 namespace sieve {
 
 std::vector<int> primes(int n) {
-    std::vector<bool> flags(n - 1, false);
+    const auto offset = 2;
+    std::vector<bool> is_composite(n - 1, false);
     for (int i = 0; i < n - 1; ++i) {
-        if (flags[i]) {
+        if (is_composite[i]) {
             continue;
         }
 
-        for (int j = 2 * i + 2; j < n - 1; j += (i + 2)) {
-            flags[j] = true;
+        const auto startPos = (i + offset) * (i + offset) - offset;
+        for (int j = startPos; j < n - 1; j += (i + offset)) {
+            is_composite[j] = true;
         }
     }
 
-    std::vector<int> primes_;
-    primes_.reserve(n / std::log(n));
+    std::vector<int> result;
+    result.reserve(n / std::log(n));
     for (int i = 0; i < n - 1; ++i) {
-        if (!flags[i]) {
-            primes_.push_back(i + 2);
+        if (!is_composite[i]) {
+            result.push_back(i + offset);
         }
     }
-    return primes_;
+    return result;
 }
 
 }  // namespace sieve
